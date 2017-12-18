@@ -1,0 +1,70 @@
+assignment #6
+
+ Write pseudo algorithm for process synchronization problems-
+  (Show  complete execution steps for all processes)
+Q1. Show how producer-consumer problem gives inconsistancy when shared variable is modified by both the processes.
+(i) Context switching process after execution of each statement
+(ii) ontext switching such that it results in inconsistancy of shared variable
+
+Q2. Validate following pseudocode for three processes for correctness of ME using swap instruction
+    where lock is shared boolean variable , initial value of lock is FALSE
+    and key is local boolean variable
+        P(i)
+   do { 
+       key=TRUE;
+       while (key == TRUE)swap(&lock,&key);
+       // CR
+       lock = FALSE;
+       ...
+      } while(TRUE)
+   
+Q3. Validate following pseudocode  for four(n=4) processes for correctness of ME using TSL instruction
+    verify that bounded wait for waiting processes
+    shared boolean lock = FALSE    
+    shared boolean wait[i]=FALSE , i=0 to 3
+    key is local boolean variable
+        P(i)
+    do {
+       wait[i]=TRUE;
+       key=TRUE;
+       while (key && wait[i]) key=TSL(&lock);
+       wait[i]=FALSE;
+       // CR
+       j =(i + 1) % n;  // mod operation
+       while ( (j != i) && ! wait[j] ) j =(j+ i)% n;
+       if (j==i)  lock = FALSE;//if no process waiting then reset
+       else  wait[j] = FALSE;//allow next waiting process
+       ...
+      } while(TRUE)
+   
+Q4. Write complete pseudocode for producer-consumer problem with infinite buffer using counting semaphores
+    binary semaphore mutex=TRUE
+    counting semaphore n=0
+    validate no violation of ME
+
+Q5. Write complete pseudocode for producer-consumer problem with finite buffer(size 10) using counting semaphores
+    binary semaphore mutex=TRUE
+    counting semaphore Full=0,Empty=10
+    assume one producer process and three consumer processes
+   (i) each processe executes three (or less if blocked) statements before context switch to other process (perform for 24 context switching)
+   (ii) same as (i) but Full=5, Empty=5 (perform for 24 context switching)
+
+Q6. Write complete pseudocode for reader-writer problem with (context switch after every statement)
+    (i) Reader priority     (ii) no priority(fair policy)   (iii) Writer priority
+    (Write CR takes 8 context switching and Reader CR takes 8 context switching)
+    The order of arrival of processes for case
+    (i) R1  R2  W1 ..... R3  R4  W2 W3 ... R5 R6
+    (dots shows number of context switching that is delay between arrival of next processes
+    (ii) R1  R2  W1 ..(a)... R3  R4  W2 W3 ..(b). R5 R6
+    (iii) R1 ... R2  W1  R3  R4 . W2 W3 .. R5 R6
+  
+    Show  complete execution order for all processes
+    Give final order of process completion
+
+Q7.Write complete pseudocode for all solutions of  dining- philosopher.
+
+Q8. Write complete pseudocode sleeping barber.
+
+Submit any four problems.
+
+
