@@ -1,0 +1,85 @@
+assignment #7
+
+
+
+Q1. A barber shop consists of a waiting room with n chairs and a barber room with one barber chair. If there is no customer, the barber goes to sleep. If a customer arrives and finds wait room full(no chair empty),then he leaves else occupy a seat. if the barber is asleep, the customer wakes up the barber and get hair cut.
+Sleeping-barber problem  pseudocode -
+   semaphore c = 0; // number of customers waiting for hair-cut 
+   semaphore binary b = 0; //  barber waiting for customers 
+   semaphore binary m = 1; // for mutual exclusion 
+  int count = 0; // number of empty chairs
+
+  customer(i)			barber()
+ do{                             do {
+    wait(m)                          wait(c)
+    if (count<N) {                   wait(m) 
+       count--                       count++
+       signal(c)                     signal(b)
+        signal(m)                    signal(m) 
+       wait(b)                        #CR do-haircut and leaveshop
+       #CR get-haircut               } while(TRUE)
+       }                             
+     else  {
+       signal(m)
+      //leaveshop
+       }
+   }while (TRUE)
+
+validate for six customers and N=3,if context switch after each statement
+(assume  during get-haircut() or do-haircut() other process runs three statements - these functions takes 3 context switch)
+
+Q2. Automated traffic light system, based on Number of vehicles in any of direction-
+north-south(ToFromMalaviyanagar) and east-west(ToFromBhaskar), controlled by controller
+connected to respective sensor(camera)in that direction.
+Pseducode based on monitor is given-
+
+monitor traficJunction{
+  int ToFromMalaviyanagar =0, ToFromBhaskar=0;
+signal ToFromMalaviyanagarLight=RED, ToFromBhaskarLight=RED;
+condition busy;
+
+public:
+  MalaviyanagarTraffic()  // vehicles to or from malaviya nagar
+  {
+   if(ToFromBhaskar>0) wait(busy) ; // traffic light GREEN for to or from bhaskar
+   ToFromMalaviyanagarLight = GREEN;
+   ToFromBhaskarLight = RED;
+   ToFromMalaviyanagar += 1;//start
+  }
+  BhaskarTraffic()  // vehicles to or from Bhaskar
+   {
+   if(ToFromMalaviyanagar>0) wait(busy) ; // traffic light GREEN for to or from malaviya nagar
+      ToFromBhaskarLight = GREEN;
+   ToFromMalaviyanagarLight = RED;
+   ToFromBhaskar += 1;  //start
+  }
+ Junctionfree(Flow empty)   //No vehicle at junction
+ {
+  if(empty == Malaviyanagar) 
+    { ToFromMalaviyanagar -= 1;
+      if(ToFromMalaviyanagar == 0) signal(busy);
+    }
+  else if(empty==Bhaskar)
+     {  ToFromBhaskar -= 1;
+        if(ToFromBhaskar == 0) signal(busy); 
+     }
+ }
+} // end of monitor
+//(controller(NS))		//(controller(EW))
+P0()              	 	 P1()
+while(TRUE)			while(TRUE()
+{				{
+MalaviyanagarTraffic()		  BhaskarTraffic()
+# TRAFFIC FLOW			  # TRAFFIC FLOW
+Junctionfree(Malaviyanagar) 	  Junctionfree(Bhaskar) 
+}				}
+
+Explain the working of above code for-
+(a) North-South traffic light GREEN, three vehicles to cross junction
+    camera(P1) senses a vehicle in East-West direction		
+(b) Currently no vehicle at junction,cameras (P1,P0) sense a vehicle in 
+their respective direction(in given order).
+
+
+
+
