@@ -1,0 +1,59 @@
+nano editor commands-
+
+To get the help about commands- CTRL+G
+Exit(current file buffer/editor) -CTRL+X
+Write buffer/file to disk-CTRL+O, 
+if nano starts with -u then can undo previous command with ALT+U and redo ALT+E
+
+Insert file into current line - CTRL+R,(display files in current directory-CTRL+T)
+                        ( insert file in new buffer -ALT+F)                    
+                        (execute command -CTRL+X,output of coomand inserted in current buffer)
+Switch buffer left(previous)-ALT+<, right(next)-ALT+>
+Exit from sub menu(cancle)-CTRL+C
+
+movement in file-
+Refresh the scree -CTRL+L
+Move to prev page - CTRL+Y , next page -CTRL+V, prev line - CTRL+P , next line -CTRL+N
+Display the position of the cursor- CTRL+C
+Go to line and column number- CTRL+_(ALT+G)
+Scroll down one line without scrolling the cursor - ALT++(ALT+=),Scroll up one line without scrolling the cursor ALT+-(ALT+_)
+Move to the matching bracket-ALT+]
+Move to the first line of the file-ALT+\(ALT+|),Move to the last line of the file-ALT+/(ALT+?)
+Move to the beginning of the current paragraph-ALT+((ALT+9),Move to the end of the current paragraph-ALT+)(ALT+0)
+Move to the beginning of the current line-CTRL+A,Move to the end of the current line-CTRL+E
+Move to the next line-CTRL+N, Move to the previous line-CTRL+P
+Move back one word- ALT+spave, Move forward one word- CTRL+space
+Move back one char- CTRL+B, Move forward one char- CTRL+F
+
+
+
+
+
+
+search/replace
+Search string/expression -CTRL+W,(repeat last search, ALT+W)
+Replace a string or a regular expression -CTRL+\(ALT+R)
+
+Cut/copy/paste
+Mark text at the cursor position- CTRL+^(ALT+A)
+Cut the current line and store it in the cutbuffer -CTRL+K
+Cut from the cursor position to the end of the file-ALT+T
+Uncut(paste) the current line and store it in the cutbuffer -CTRL+U
+(repeated CTRL+U paste same in next location)
+Copy the current line and store it in the cutbuffer -ALT+^(ALT+6)
+(only contigous lines can be store in cutbuffer)
+
+insert/delet char
+Insert the next keystroke verbatim-ALT+V
+Insert a tab at the cursor position-CTRL+I
+Insert a newline at the cursor position-CTRL+M
+Delete the character under the cursor- CTRL+D
+Delete the character to the left of the cursor- CTRL+H
+
+
+
+Justify the current paragraph-CTRL+J,Unjustify the current paragraph-CTRL+U
+Unindent the current line -ALT+{, indent the current line -ALT+}
+Count the number of words, lines, and characters-ALT+D
+
+
